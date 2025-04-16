@@ -9,11 +9,11 @@ public class Screen {
     }
 
     public Vector2 screenToNormal(Vector2 pos) {
-        return new Vector2(pos.x - (float) width / 2, pos.y - (float) height / 2);
+        return new Vector2(pos.getX() - (float) width / 2, pos.getY() - (float) height / 2);
     }
 
     public Vector2 normalToScreen(Vector2 pos) {
-        return new Vector2(pos.x + (float) width / 2, pos.y + (float) height / 2);
+        return new Vector2(pos.getX() + (float) width / 2, pos.getY() + (float) height / 2);
     }
 
     public Vector2 screenToNormal(float x, float y) {
