@@ -2,7 +2,7 @@ package res;
 
 public class Vector2 {
 
-    public float x, y;
+    private float x, y;
 
     public Vector2(float X, float Y) {
         x = X;

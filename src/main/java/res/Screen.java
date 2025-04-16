@@ -1,7 +1,7 @@
 package res;
 
 public class Screen {
-    public int width, height;
+    private int width, height;
 
     public Screen(int _width, int _height) {
         width = _width;

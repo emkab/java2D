@@ -13,10 +13,9 @@ import java.util.*;
 public class Window implements Runnable, ActionListener, MouseListener, MouseMotionListener, KeyListener, ComponentListener, MouseWheelListener {
     protected boolean running;
     protected long lastUpdate;
-    int fps;
-    float deltaTime;
-    Duration deltaTimeDuration;
-    final Object particleLock = new Object();
+    private int fps;
+    private float deltaTime;
+    private Duration deltaTimeDuration;
     protected TreeSet<String> keysDown;
     protected TreeSet<String> processedKeys;
     protected TreeSet<String> unprocessedKeys;
@@ -29,12 +28,12 @@ public class Window implements Runnable, ActionListener, MouseListener, MouseMot
     protected BufferedImage onscreenImage;
     protected Graphics2D onscreen;
     protected int width, height, rWidth, rHeight;
-    double scale;
-    double graphicsScale = 0.4;
-    float strokeThickness = 4.0f;
-    public Screen screen;
-    BasicStroke stroke;
-    Font font;
+    private double scale;
+    private double graphicsScale = 0.4;
+    private float strokeThickness = 4.0f;
+    private Screen screen;
+    private BasicStroke stroke;
+    private Font font;
 
     public void run() {
         if (Thread.currentThread().getName().equals("render")) {
@@ -328,27 +327,27 @@ public class Window implements Runnable, ActionListener, MouseListener, MouseMot
     public void drawCircle(int x, int y, int r, Color color, Color fillColor, float strokeSize, Graphics2D g2d) {
         Vector2 newPos = screen.normalToScreen(x, y);
         g2d.setStroke(new BasicStroke(strokeSize, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
-        drawCircle((int) newPos.x - r / 2, (int) newPos.y - r / 2, r, color, fillColor, g2d);
+        drawCircle((int) newPos.getX() - r / 2, (int) newPos.getY() - r / 2, r, color, fillColor, g2d);
     }
 
     public void drawCircle(Vector2 pos, int r, Color color, Color fillColor, float strokeSize, Graphics2D g2d) {
-        Vector2 newPos = screen.normalToScreen(pos.x, pos.y);
+        Vector2 newPos = screen.normalToScreen(pos.getX(), pos.getY());
         g2d.setStroke(new BasicStroke(strokeSize, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
-        drawCircle((int) newPos.x - r / 2, (int) newPos.y - r / 2, r, color, fillColor, g2d);
+        drawCircle((int) newPos.getX() - r / 2, (int) newPos.getY() - r / 2, r, color, fillColor, g2d);
     }
 
     public void write(String string, Vector2 pos, Color color, float fontSize, Graphics2D g2d) {
-        Vector2 newPos = screen.normalToScreen(pos.x, pos.y);
+        Vector2 newPos = screen.normalToScreen(pos.getX(), pos.getY());
         g2d.setColor(color);
         g2d.setFont(g2d.getFont().deriveFont(fontSize));
-        g2d.drawString(string, newPos.x, newPos.y);
+        g2d.drawString(string, newPos.getX(), newPos.getY());
     }
 
     public void write(String string, int x, int y, Color color, float fontSize, Graphics2D g2d) {
         Vector2 newPos = screen.normalToScreen(x, y);
         g2d.setColor(color);
         g2d.setFont(g2d.getFont().deriveFont(fontSize));
-        g2d.drawString(string, newPos.x, newPos.y);
+        g2d.drawString(string, newPos.getX(), newPos.getY());
     }
 
     public void drawLine(Vector2 pos1, Vector2 pos2, Color color, float strokeSize, Graphics2D g2d) {
@@ -356,6 +355,6 @@ public class Window implements Runnable, ActionListener, MouseListener, MouseMot
         pos2 = screen.normalToScreen(pos2);
         g2d.setColor(color);
         g2d.setStroke(new BasicStroke(strokeSize, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
-        g2d.drawLine((int) pos1.x, (int) pos1.y, (int) pos2.x, (int) pos2.y);
+        g2d.drawLine((int) pos1.getX(), (int) pos1.getY(), (int) pos2.getX(), (int) pos2.getY());
     }
 }
