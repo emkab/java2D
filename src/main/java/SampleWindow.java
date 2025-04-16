@@ -11,8 +11,4 @@ public class SampleWindow extends Window {
     public void init(String title) {
         super.init(title);
     }
-
-    public void update() {
-        write("Hello, world!", -width / 2 + 5, -rHeight / 2 + 5, Color.WHITE, 28, onscreen);
-    }
 }
