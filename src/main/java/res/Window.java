@@ -181,7 +181,38 @@ public class Window implements Runnable, ActionListener, MouseListener, MouseMot
         icon.setImage(onscreenImage);
     }
 
+    protected BaseEntity[] entities = {};
+
+    public int addEntity(BaseEntity e)
+    {
+        BaseEntity[] _entities = new BaseEntity[entities.length + 1];
+        _entities[_entities.length - 1] = e;
+        entities = _entities;
+        return entities.length;
+    }
+
+    public int removeEntity(int index) {
+        if (entities.length == 0 || index >= entities.length) return 0;
+        BaseEntity[] _entities = new BaseEntity[entities.length - 1];
+
+        boolean found = false;
+        for (int i = 0; i < entities.length - 1; i++) {
+            if (i == index) {
+                found = true;
+                continue;
+            }
+
+            _entities[found ? i - 1 : i] = entities[i];
+        }
+        
+        entities = _entities;
+        return entities.length;
+    }
+
     protected void update() {
+        for (BaseEntity e : entities) {
+            e.draw(screen, onscreen);
+        }
     }
 
     protected void processKeys() {
