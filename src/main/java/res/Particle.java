@@ -11,11 +11,19 @@ public class Particle extends CircleEntity {
         super();
     }
 
-    public Integer getVelocity() {
-        return getEntityArg("velocity", Integer.class);
+    public float getVelocity() {
+        return getEntityArg("velocity", float.class);
     }
 
-    public void setVelocity(Integer velocity) {
+    public void setVelocity(float velocity) {
         setEntityArg("velocity", velocity);
+    }
+
+    public float getAcceleration() {
+        return getEntityArg("acceleration", float.class);
+    }
+
+    public void setAcceleration(float acceleration) {
+        setEntityArg("acceleration", acceleration);
     }
 }
