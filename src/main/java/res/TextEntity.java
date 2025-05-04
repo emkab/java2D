@@ -13,6 +13,8 @@ public class TextEntity extends BaseEntity {
     public TextEntity() {
         super();
         setText("");
+        setFontSize(10);
+        setColor(Color.white);
     }
 
     public String getText() {
@@ -21,14 +23,6 @@ public class TextEntity extends BaseEntity {
 
     public void setText(String text) {
         setEntityArg("text", text);
-    }
-
-    public Font getFont() {
-        return getEntityArg("font", Font.class);
-    }
-
-    public void setFont(Font font) {
-        setEntityArg("font", font);
     }
 
     public Integer getFontSize() {

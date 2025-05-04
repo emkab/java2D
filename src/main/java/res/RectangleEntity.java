@@ -7,14 +7,7 @@ public class RectangleEntity extends BaseEntity {
         super();
         setWidth(10);
         setHeight(10);
-        setColor(new Color(255, 255, 255, 255));
-    }
-
-    public RectangleEntity(Integer width, Integer height, Color color) {
-        super();
-        setWidth(width);
-        setHeight(height);
-        setColor(color);
+        setColor(Color.white);
     }
 
     public RectangleEntity(Vector2 pos, Integer width, Integer height, Color color) {
