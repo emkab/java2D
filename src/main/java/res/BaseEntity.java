@@ -1,13 +1,28 @@
 package res;
 
 import java.awt.*;
+import java.util.HashMap;
+import java.util.Map;
 
 public class BaseEntity {
     private Vector2 pos;
-    private EntityArgs args = new EntityArgs();
+    private Map<String, Object> args;
 
-    public BaseEntity(Vector2 _pos) {
-        pos = _pos;
+    public BaseEntity(Vector2 pos) {
+        this.pos = pos;
+        this.args = new HashMap<>();
+    }
+
+    public <T> void setEntityArg(String key, T value) {
+        args.put(key, value);
+    }
+
+    public <T> T getEntityArg(String key, Class<T> clazz) {
+        Object value = args.get(key);
+        if (clazz.isInstance(value)) {
+            return clazz.cast(value);
+        }
+        return null; // or throw an exception if you prefer
     }
 
     public BaseEntity() {
@@ -22,13 +37,6 @@ public class BaseEntity {
         this.pos = pos;
     }
 
-    public EntityArgs getArgs() {
-        return args;
+    public void draw(Screen screen, Graphics2D g2d) {
     }
-
-    public void setArgs(EntityArgs args) {
-        this.args = args;
-    }
-
-    public void draw(Screen screen, Graphics2D g2d) {}
 }

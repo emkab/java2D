@@ -4,18 +4,42 @@ import java.awt.*;
 
 public class TextEntity extends BaseEntity{
     public String getText() {
-        return getArgs().getText();
+        return getEntityArg("text", String.class);
     }
 
     public void setText(String text) {
-        getArgs().setText(text);
+        setEntityArg("text", text);
+    }
+
+    public Font getFont() {
+        return getEntityArg("font", Font.class);
+    }
+
+    public void setFont(Font font) {
+        setEntityArg("font", font);
+    }
+
+    public Integer getFontSize() {
+        return getEntityArg("fontSize", Integer.class);
+    }
+
+    public void setFontSize(Integer fontSize) {
+        setEntityArg("fontSize", fontSize);
+    }
+
+    public Color getColor() {
+        return getEntityArg("color", Color.class);
+    }
+
+    public void setColor(Color color) {
+        setEntityArg("color", color);
     }
 
     public TextEntity(Vector2 _pos, String text, int fontSize, Color color) {
         super(_pos);
         setText(text);
-        getArgs().setFontSize(fontSize);
-        getArgs().setColor(color);
+        setFontSize(fontSize);
+        setColor(color);
     }
 
     public TextEntity() {
@@ -25,8 +49,8 @@ public class TextEntity extends BaseEntity{
 
     @Override
     public void draw(Screen screen, Graphics2D g2d) {
-        g2d.setColor(getArgs().getColor());
-        g2d.setFont(g2d.getFont().deriveFont((float) getArgs().getFontSize()));
+        g2d.setColor(getColor());
+        g2d.setFont(g2d.getFont().deriveFont((float) getFontSize()));
         g2d.drawString(getText(), getPos().getX(), getPos().getY());
     }
 }
