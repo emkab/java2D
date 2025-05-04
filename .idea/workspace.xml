@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="038bdd4f-c5a0-4544-b1aa-528b6b31d4a6" name="Changes" comment="Add text entity.">
-      <change afterPath="$PROJECT_DIR$/src/main/java/res/SquareEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/res/BaseEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/res/BaseEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/res/EntityArgs.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/res/TextEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/res/TextEntity.java" afterDir="false" />
+    <list default="true" id="038bdd4f-c5a0-4544-b1aa-528b6b31d4a6" name="Changes" comment="Add getters to: screen.">
+      <change afterPath="$PROJECT_DIR$/src/main/java/res/RectangleEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/res/Screen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/res/Screen.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -153,13 +151,49 @@
       <option name="project" value="LOCAL" />
       <updated>1744847807388</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Update Entity args system to use a key-value pair map.">
+      <option name="closed" value="true" />
+      <created>1746386003872</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1746386003872</updated>
+    </task>
+    <task id="LOCAL-00006" summary="_pos to pos.">
+      <option name="closed" value="true" />
+      <created>1746386417683</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1746386417683</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Add getters to: width, height, rWidth, rHeight, and scale.">
+      <option name="closed" value="true" />
+      <created>1746386619288</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1746386619288</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Add getters to: screen.">
+      <option name="closed" value="true" />
+      <created>1746386717351</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1746386717351</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Scope fixes." />
     <MESSAGE value="Add global handling." />
     <MESSAGE value="Add text entity." />
-    <option name="LAST_COMMIT_MESSAGE" value="Add text entity." />
+    <MESSAGE value="Update Entity args system to use a key-value pair map." />
+    <MESSAGE value="_pos to pos." />
+    <MESSAGE value="Add getters to: width, height, rWidth, rHeight, and scale." />
+    <MESSAGE value="Add getters to: screen." />
+    <option name="LAST_COMMIT_MESSAGE" value="Add getters to: screen." />
   </component>
 </project>
