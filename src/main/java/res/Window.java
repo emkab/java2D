@@ -75,6 +75,26 @@ public class Window implements Runnable, ActionListener, MouseListener, MouseMot
         else return 0f;
     }
 
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public int getrWidth() {
+        return rWidth;
+    }
+
+    public int getrHeight() {
+        return rHeight;
+    }
+
+    public double getScale() {
+        return scale;
+    }
+
     protected boolean waitUntil(Long time) {
         long now = System.nanoTime();
         if (now < time) {
