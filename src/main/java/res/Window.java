@@ -210,6 +210,7 @@ public class Window implements Runnable, ActionListener, MouseListener, MouseMot
     public int addEntity(BaseEntity e)
     {
         BaseEntity[] _entities = new BaseEntity[entities.length + 1];
+        System.arraycopy(entities, 0, _entities, 0, entities.length);
         _entities[_entities.length - 1] = e;
         entities = _entities;
         return entities.length;
@@ -380,34 +381,34 @@ public class Window implements Runnable, ActionListener, MouseListener, MouseMot
     }
 
     public void drawCircle(int x, int y, int r, Color color, Color fillColor, float strokeSize, Graphics2D g2d) {
-        Vector2 newPos = screen.normalToScreen(x, y);
+        Vector2 newPos = screen.worldToScreen(x, y);
         g2d.setStroke(new BasicStroke(strokeSize, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
         drawCircle((int) newPos.getX() - r / 2, (int) newPos.getY() - r / 2, r, color, fillColor, g2d);
     }
 
     public void drawCircle(Vector2 pos, int r, Color color, Color fillColor, float strokeSize, Graphics2D g2d) {
-        Vector2 newPos = screen.normalToScreen(pos.getX(), pos.getY());
+        Vector2 newPos = screen.worldToScreen(pos.getX(), pos.getY());
         g2d.setStroke(new BasicStroke(strokeSize, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
         drawCircle((int) newPos.getX() - r / 2, (int) newPos.getY() - r / 2, r, color, fillColor, g2d);
     }
 
     public void write(String string, Vector2 pos, Color color, float fontSize, Graphics2D g2d) {
-        Vector2 newPos = screen.normalToScreen(pos.getX(), pos.getY());
+        Vector2 newPos = screen.worldToScreen(pos.getX(), pos.getY());
         g2d.setColor(color);
         g2d.setFont(g2d.getFont().deriveFont(fontSize));
         g2d.drawString(string, newPos.getX(), newPos.getY());
     }
 
     public void write(String string, int x, int y, Color color, float fontSize, Graphics2D g2d) {
-        Vector2 newPos = screen.normalToScreen(x, y);
+        Vector2 newPos = screen.worldToScreen(x, y);
         g2d.setColor(color);
         g2d.setFont(g2d.getFont().deriveFont(fontSize));
         g2d.drawString(string, newPos.getX(), newPos.getY());
     }
 
     public void drawLine(Vector2 pos1, Vector2 pos2, Color color, float strokeSize, Graphics2D g2d) {
-        pos1 = screen.normalToScreen(pos1);
-        pos2 = screen.normalToScreen(pos2);
+        pos1 = screen.worldToScreen(pos1);
+        pos2 = screen.worldToScreen(pos2);
         g2d.setColor(color);
         g2d.setStroke(new BasicStroke(strokeSize, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
         g2d.drawLine((int) pos1.getX(), (int) pos1.getY(), (int) pos2.getX(), (int) pos2.getY());
