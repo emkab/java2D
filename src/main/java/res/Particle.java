@@ -18,6 +18,4 @@ public class Particle extends CircleEntity {
     public void setVelocity(Integer velocity) {
         setEntityArg("velocity", velocity);
     }
-
-
 }
