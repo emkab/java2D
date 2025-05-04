@@ -212,8 +212,9 @@ public class Window implements Runnable, ActionListener, MouseListener, MouseMot
             e.draw(screen, onscreen);
         }
 
-        for (Particle p : (Particle[]) particles.getArr()) {
-            p.update();
+        for (BaseEntity p : particles.getArr()) {
+            if (p instanceof Particle)
+                ((Particle) p).update();
         }
     }
 
