@@ -14,8 +14,8 @@ public class Main {
         RectangleEntity helloRect = new RectangleEntity(window.getScreen().worldToScreen(0, 0), 40, 20, new Color(255, 255, 0, 255));
         CircleEntity helloCircle = new CircleEntity(window.getScreen().worldToScreen(-50, -50), 30, Color.blue);
 
-        window.addEntity(helloWorld);
-        window.addEntity(helloRect);
-        window.addEntity(helloCircle);
+        window.entities.addEntity(helloRect);
+        window.entities.addEntity(helloWorld);
+        window.entities.addEntity(helloCircle);
     }
 }

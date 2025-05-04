@@ -14,7 +14,7 @@ import java.util.TreeSet;
 
 public class Window implements Runnable, ActionListener, MouseListener, MouseMotionListener, KeyListener, ComponentListener, MouseWheelListener {
     protected final Object keyLock = new Object();
-    public Color backgroundColor = Color.black;
+    public EntityArray entities = new EntityArray(), particles = new EntityArray();
     protected boolean running;
     protected long lastUpdate;
     protected TreeSet<String> keysDown;
@@ -28,7 +28,7 @@ public class Window implements Runnable, ActionListener, MouseListener, MouseMot
     protected BufferedImage onscreenImage;
     protected Graphics2D onscreen;
     protected int width, height, rWidth, rHeight;
-    protected BaseEntity[] entities = {};
+    private Color backgroundColor = Color.black;
     private int fps;
     private float deltaTime;
     private Duration deltaTimeDuration;
@@ -207,58 +207,13 @@ public class Window implements Runnable, ActionListener, MouseListener, MouseMot
         icon.setImage(onscreenImage);
     }
 
-    /**
-     * @return index of added entity.
-     **/
-    public int addEntity(BaseEntity e) {
-        BaseEntity[] _entities = new BaseEntity[entities.length + 1];
-        System.arraycopy(entities, 0, _entities, 0, entities.length);
-        _entities[_entities.length - 1] = e;
-        entities = _entities;
-        return entities.length - 1;
-    }
-
-    /**
-     * @param index index of entity to get from entities array.
-     * @return entity with matching index or null;
-     */
-    public BaseEntity getEntity(int index) {
-        if (index >= 0 && index < entities.length)
-            return entities[index];
-        return null;
-    }
-
-
-    /**
-     * @return index of entity in entities array if found, otherwise returns -1;
-     **/
-    public int getEntityIndex(BaseEntity e) {
-        for (int i = 0; i < entities.length; i++)
-            if (entities[i] == e) return i;
-        return -1;
-    }
-
-    public int removeEntity(int index) {
-        if (entities.length == 0 || index >= entities.length) return 0;
-        BaseEntity[] _entities = new BaseEntity[entities.length - 1];
-
-        boolean found = false;
-        for (int i = 0; i < entities.length - 1; i++) {
-            if (i == index) {
-                found = true;
-                continue;
-            }
-
-            _entities[found ? i - 1 : i] = entities[i];
+    protected void update() {
+        for (BaseEntity e : entities.getArr()) {
+            e.draw(screen, onscreen);
         }
 
-        entities = _entities;
-        return entities.length;
-    }
-
-    protected void update() {
-        for (BaseEntity e : entities) {
-            e.draw(screen, onscreen);
+        for (Particle p : (Particle[]) particles.getArr()) {
+            p.update();
         }
     }
 

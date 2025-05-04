@@ -26,4 +26,7 @@ public class Particle extends CircleEntity {
     public void setAcceleration(float acceleration) {
         setEntityArg("acceleration", acceleration);
     }
+
+    public void update() {
+    }
 }
