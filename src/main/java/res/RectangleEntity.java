@@ -2,7 +2,28 @@ package res;
 
 import java.awt.*;
 
-public class RectangleEntity extends BaseEntity{
+public class RectangleEntity extends BaseEntity {
+    public RectangleEntity() {
+        super();
+        setWidth(10);
+        setHeight(10);
+        setColor(new Color(255, 255, 255, 255));
+    }
+
+    public RectangleEntity(Integer width, Integer height, Color color) {
+        super();
+        setWidth(width);
+        setHeight(height);
+        setColor(color);
+    }
+
+    public RectangleEntity(Vector2 pos, Integer width, Integer height, Color color) {
+        super(pos);
+        setWidth(width);
+        setHeight(height);
+        setColor(color);
+    }
+
     public Integer getWidth() {
         return getEntityArg("width", Integer.class);
     }
@@ -25,27 +46,6 @@ public class RectangleEntity extends BaseEntity{
 
     public void setColor(Color color) {
         setEntityArg("color", color);
-    }
-
-    public RectangleEntity() {
-        super();
-        setWidth(10);
-        setHeight(10);
-        setColor(new Color(255, 255, 255, 255));
-    }
-
-    public RectangleEntity(Integer width, Integer height, Color color) {
-        super();
-        setWidth(width);
-        setHeight(height);
-        setColor(color);
-    }
-
-    public RectangleEntity(Vector2 pos, Integer width, Integer height, Color color) {
-        super(pos);
-        setWidth(width);
-        setHeight(height);
-        setColor(color);
     }
 
     @Override

@@ -8,32 +8,44 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 import java.time.Duration;
 import java.time.Instant;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.TreeSet;
 
 public class Window implements Runnable, ActionListener, MouseListener, MouseMotionListener, KeyListener, ComponentListener, MouseWheelListener {
+    protected final Object keyLock = new Object();
+    public Color backgroundColor = Color.black;
     protected boolean running;
     protected long lastUpdate;
-    private int fps;
-    private float deltaTime;
-    private Duration deltaTimeDuration;
     protected TreeSet<String> keysDown;
     protected TreeSet<String> processedKeys;
     protected TreeSet<String> unprocessedKeys;
     protected HashMap<String, ArrayList<ArrayList>> keyBindings;
     protected HashMap<Window, ArrayList<ArrayList>> mouseBindings;
-    protected final Object keyLock = new Object();
     protected JFrame window;
     protected JLabel draw;
     protected ImageIcon icon;
     protected BufferedImage onscreenImage;
     protected Graphics2D onscreen;
     protected int width, height, rWidth, rHeight;
+    protected BaseEntity[] entities = {};
+    private int fps;
+    private float deltaTime;
+    private Duration deltaTimeDuration;
     private double scale;
     private double graphicsScale = 0.4;
     private float strokeThickness = 4.0f;
     private Screen screen;
     private BasicStroke stroke;
     private Font font;
+
+    public Window(int _width, int _height, double _graphicsScale, int _fps) {
+        graphicsScale = _graphicsScale;
+        width = (int) (_width * graphicsScale);
+        height = (int) (_height * graphicsScale);
+
+        fps = _fps;
+    }
 
     public void run() {
         if (Thread.currentThread().getName().equals("render")) {
@@ -110,14 +122,6 @@ public class Window implements Runnable, ActionListener, MouseListener, MouseMot
         } else return false;
     }
 
-    public Window(int _width, int _height, double _graphicsScale, int _fps) {
-        graphicsScale = _graphicsScale;
-        width = (int) (_width * graphicsScale);
-        height = (int) (_height * graphicsScale);
-
-        fps = _fps;
-    }
-
     private void windowSetup() {
         window = new JFrame();
         window.setSize(width, height);
@@ -186,8 +190,6 @@ public class Window implements Runnable, ActionListener, MouseListener, MouseMot
         g2d.fillOval(x, y, r, r);
     }
 
-    public Color backgroundColor = Color.black;
-
     protected void drawBackground(Graphics2D g2d) {
         g2d.setColor(backgroundColor);
         g2d.drawRect(0, 0, width, height);
@@ -205,10 +207,7 @@ public class Window implements Runnable, ActionListener, MouseListener, MouseMot
         icon.setImage(onscreenImage);
     }
 
-    protected BaseEntity[] entities = {};
-
-    public int addEntity(BaseEntity e)
-    {
+    public int addEntity(BaseEntity e) {
         BaseEntity[] _entities = new BaseEntity[entities.length + 1];
         System.arraycopy(entities, 0, _entities, 0, entities.length);
         _entities[_entities.length - 1] = e;
@@ -229,7 +228,7 @@ public class Window implements Runnable, ActionListener, MouseListener, MouseMot
 
             _entities[found ? i - 1 : i] = entities[i];
         }
-        
+
         entities = _entities;
         return entities.length;
     }

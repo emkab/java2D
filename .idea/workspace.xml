@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="038bdd4f-c5a0-4544-b1aa-528b6b31d4a6" name="Changes" comment="Add getters to: screen.">
-      <change afterPath="$PROJECT_DIR$/src/main/java/res/RectangleEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/res/Screen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/res/Screen.java" afterDir="false" />
-    </list>
+    <list default="true" id="038bdd4f-c5a0-4544-b1aa-528b6b31d4a6" name="Changes" comment=".idea workspace.xml change.." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -183,7 +179,39 @@
       <option name="project" value="LOCAL" />
       <updated>1746386717351</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Window fixes.">
+      <option name="closed" value="true" />
+      <created>1746387322084</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1746387322084</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Rename Screen functions.">
+      <option name="closed" value="true" />
+      <created>1746387331574</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1746387331574</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Add rectangle entity.">
+      <option name="closed" value="true" />
+      <created>1746387346942</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1746387346942</updated>
+    </task>
+    <task id="LOCAL-00012" summary=".idea workspace.xml change..">
+      <option name="closed" value="true" />
+      <created>1746387360314</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1746387360314</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -194,6 +222,10 @@
     <MESSAGE value="_pos to pos." />
     <MESSAGE value="Add getters to: width, height, rWidth, rHeight, and scale." />
     <MESSAGE value="Add getters to: screen." />
-    <option name="LAST_COMMIT_MESSAGE" value="Add getters to: screen." />
+    <MESSAGE value="Window fixes." />
+    <MESSAGE value="Rename Screen functions." />
+    <MESSAGE value="Add rectangle entity." />
+    <MESSAGE value=".idea workspace.xml change.." />
+    <option name="LAST_COMMIT_MESSAGE" value=".idea workspace.xml change.." />
   </component>
 </project>

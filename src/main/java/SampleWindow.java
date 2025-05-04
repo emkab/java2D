@@ -1,7 +1,5 @@
 import res.Window;
 
-import java.awt.*;
-
 public class SampleWindow extends Window {
 
     public SampleWindow(int _width, int _height, double _graphicsScale, int _fps) {

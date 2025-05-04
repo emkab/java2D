@@ -13,6 +13,10 @@ public class BaseEntity {
         this.args = new HashMap<>();
     }
 
+    public BaseEntity() {
+        pos = new Vector2();
+    }
+
     public <T> void setEntityArg(String key, T value) {
         args.put(key, value);
     }
@@ -23,10 +27,6 @@ public class BaseEntity {
             return clazz.cast(value);
         }
         return null; // or throw an exception if you prefer
-    }
-
-    public BaseEntity() {
-        pos = new Vector2();
     }
 
     public Vector2 getPos() {
