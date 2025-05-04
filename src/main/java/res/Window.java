@@ -207,12 +207,35 @@ public class Window implements Runnable, ActionListener, MouseListener, MouseMot
         icon.setImage(onscreenImage);
     }
 
+    /**
+     * @return index of added entity.
+     **/
     public int addEntity(BaseEntity e) {
         BaseEntity[] _entities = new BaseEntity[entities.length + 1];
         System.arraycopy(entities, 0, _entities, 0, entities.length);
         _entities[_entities.length - 1] = e;
         entities = _entities;
-        return entities.length;
+        return entities.length - 1;
+    }
+
+    /**
+     * @param index index of entity to get from entities array.
+     * @return entity with matching index or null;
+     */
+    public BaseEntity getEntity(int index) {
+        if (index >= 0 && index < entities.length)
+            return entities[index];
+        return null;
+    }
+
+
+    /**
+     * @return index of entity in entities array if found, otherwise returns -1;
+     **/
+    public int getEntityIndex(BaseEntity e) {
+        for (int i = 0; i < entities.length; i++)
+            if (entities[i] == e) return i;
+        return -1;
     }
 
     public int removeEntity(int index) {
