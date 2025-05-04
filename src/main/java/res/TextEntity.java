@@ -35,8 +35,8 @@ public class TextEntity extends BaseEntity{
         setEntityArg("color", color);
     }
 
-    public TextEntity(Vector2 _pos, String text, int fontSize, Color color) {
-        super(_pos);
+    public TextEntity(Vector2 pos, String text, int fontSize, Color color) {
+        super(pos);
         setText(text);
         setFontSize(fontSize);
         setColor(color);
