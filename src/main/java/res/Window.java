@@ -8,32 +8,44 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 import java.time.Duration;
 import java.time.Instant;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.TreeSet;
 
 public class Window implements Runnable, ActionListener, MouseListener, MouseMotionListener, KeyListener, ComponentListener, MouseWheelListener {
+    protected final Object keyLock = new Object();
+    public Color backgroundColor = Color.black;
     protected boolean running;
     protected long lastUpdate;
-    private int fps;
-    private float deltaTime;
-    private Duration deltaTimeDuration;
     protected TreeSet<String> keysDown;
     protected TreeSet<String> processedKeys;
     protected TreeSet<String> unprocessedKeys;
     protected HashMap<String, ArrayList<ArrayList>> keyBindings;
     protected HashMap<Window, ArrayList<ArrayList>> mouseBindings;
-    protected final Object keyLock = new Object();
     protected JFrame window;
     protected JLabel draw;
     protected ImageIcon icon;
     protected BufferedImage onscreenImage;
     protected Graphics2D onscreen;
     protected int width, height, rWidth, rHeight;
+    protected BaseEntity[] entities = {};
+    private int fps;
+    private float deltaTime;
+    private Duration deltaTimeDuration;
     private double scale;
     private double graphicsScale = 0.4;
     private float strokeThickness = 4.0f;
     private Screen screen;
     private BasicStroke stroke;
     private Font font;
+
+    public Window(int _width, int _height, double _graphicsScale, int _fps) {
+        graphicsScale = _graphicsScale;
+        width = (int) (_width * graphicsScale);
+        height = (int) (_height * graphicsScale);
+
+        fps = _fps;
+    }
 
     public void run() {
         if (Thread.currentThread().getName().equals("render")) {
@@ -75,6 +87,30 @@ public class Window implements Runnable, ActionListener, MouseListener, MouseMot
         else return 0f;
     }
 
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public int getrWidth() {
+        return rWidth;
+    }
+
+    public int getrHeight() {
+        return rHeight;
+    }
+
+    public double getScale() {
+        return scale;
+    }
+
+    public Screen getScreen() {
+        return screen;
+    }
+
     protected boolean waitUntil(Long time) {
         long now = System.nanoTime();
         if (now < time) {
@@ -84,14 +120,6 @@ public class Window implements Runnable, ActionListener, MouseListener, MouseMot
             }
             return true;
         } else return false;
-    }
-
-    public Window(int _width, int _height, double _graphicsScale, int _fps) {
-        graphicsScale = _graphicsScale;
-        width = (int) (_width * graphicsScale);
-        height = (int) (_height * graphicsScale);
-
-        fps = _fps;
     }
 
     private void windowSetup() {
@@ -162,8 +190,6 @@ public class Window implements Runnable, ActionListener, MouseListener, MouseMot
         g2d.fillOval(x, y, r, r);
     }
 
-    public Color backgroundColor = Color.black;
-
     protected void drawBackground(Graphics2D g2d) {
         g2d.setColor(backgroundColor);
         g2d.drawRect(0, 0, width, height);
@@ -181,7 +207,59 @@ public class Window implements Runnable, ActionListener, MouseListener, MouseMot
         icon.setImage(onscreenImage);
     }
 
+    /**
+     * @return index of added entity.
+     **/
+    public int addEntity(BaseEntity e) {
+        BaseEntity[] _entities = new BaseEntity[entities.length + 1];
+        System.arraycopy(entities, 0, _entities, 0, entities.length);
+        _entities[_entities.length - 1] = e;
+        entities = _entities;
+        return entities.length - 1;
+    }
+
+    /**
+     * @param index index of entity to get from entities array.
+     * @return entity with matching index or null;
+     */
+    public BaseEntity getEntity(int index) {
+        if (index >= 0 && index < entities.length)
+            return entities[index];
+        return null;
+    }
+
+
+    /**
+     * @return index of entity in entities array if found, otherwise returns -1;
+     **/
+    public int getEntityIndex(BaseEntity e) {
+        for (int i = 0; i < entities.length; i++)
+            if (entities[i] == e) return i;
+        return -1;
+    }
+
+    public int removeEntity(int index) {
+        if (entities.length == 0 || index >= entities.length) return 0;
+        BaseEntity[] _entities = new BaseEntity[entities.length - 1];
+
+        boolean found = false;
+        for (int i = 0; i < entities.length - 1; i++) {
+            if (i == index) {
+                found = true;
+                continue;
+            }
+
+            _entities[found ? i - 1 : i] = entities[i];
+        }
+
+        entities = _entities;
+        return entities.length;
+    }
+
     protected void update() {
+        for (BaseEntity e : entities) {
+            e.draw(screen, onscreen);
+        }
     }
 
     protected void processKeys() {
@@ -325,34 +403,34 @@ public class Window implements Runnable, ActionListener, MouseListener, MouseMot
     }
 
     public void drawCircle(int x, int y, int r, Color color, Color fillColor, float strokeSize, Graphics2D g2d) {
-        Vector2 newPos = screen.normalToScreen(x, y);
+        Vector2 newPos = screen.worldToScreen(x, y);
         g2d.setStroke(new BasicStroke(strokeSize, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
         drawCircle((int) newPos.getX() - r / 2, (int) newPos.getY() - r / 2, r, color, fillColor, g2d);
     }
 
     public void drawCircle(Vector2 pos, int r, Color color, Color fillColor, float strokeSize, Graphics2D g2d) {
-        Vector2 newPos = screen.normalToScreen(pos.getX(), pos.getY());
+        Vector2 newPos = screen.worldToScreen(pos.getX(), pos.getY());
         g2d.setStroke(new BasicStroke(strokeSize, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
         drawCircle((int) newPos.getX() - r / 2, (int) newPos.getY() - r / 2, r, color, fillColor, g2d);
     }
 
     public void write(String string, Vector2 pos, Color color, float fontSize, Graphics2D g2d) {
-        Vector2 newPos = screen.normalToScreen(pos.getX(), pos.getY());
+        Vector2 newPos = screen.worldToScreen(pos.getX(), pos.getY());
         g2d.setColor(color);
         g2d.setFont(g2d.getFont().deriveFont(fontSize));
         g2d.drawString(string, newPos.getX(), newPos.getY());
     }
 
     public void write(String string, int x, int y, Color color, float fontSize, Graphics2D g2d) {
-        Vector2 newPos = screen.normalToScreen(x, y);
+        Vector2 newPos = screen.worldToScreen(x, y);
         g2d.setColor(color);
         g2d.setFont(g2d.getFont().deriveFont(fontSize));
         g2d.drawString(string, newPos.getX(), newPos.getY());
     }
 
     public void drawLine(Vector2 pos1, Vector2 pos2, Color color, float strokeSize, Graphics2D g2d) {
-        pos1 = screen.normalToScreen(pos1);
-        pos2 = screen.normalToScreen(pos2);
+        pos1 = screen.worldToScreen(pos1);
+        pos2 = screen.worldToScreen(pos2);
         g2d.setColor(color);
         g2d.setStroke(new BasicStroke(strokeSize, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
         g2d.drawLine((int) pos1.getX(), (int) pos1.getY(), (int) pos2.getX(), (int) pos2.getY());

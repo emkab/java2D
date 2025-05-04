@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="038bdd4f-c5a0-4544-b1aa-528b6b31d4a6" name="Changes" comment="Scope fixes." />
+    <list default="true" id="038bdd4f-c5a0-4544-b1aa-528b6b31d4a6" name="Changes" comment="Constructor updates.">
+      <change afterPath="$PROJECT_DIR$/src/main/java/res/CircleEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -17,21 +20,32 @@
       </list>
     </option>
   </component>
+  <component name="FormatOnSaveOptions">
+    <option name="myRunOnSave" value="true" />
+  </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "emkab"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;emkab&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/emkab/java2d",
-    "accountId": "30b9bede-84d0-4fc0-a12e-d9fdccc79ca2"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/emkab/java2d&quot;,
+    &quot;accountId&quot;: &quot;30b9bede-84d0-4fc0-a12e-d9fdccc79ca2&quot;
   }
-}]]></component>
+}</component>
+  <component name="OptimizeOnSaveOptions">
+    <option name="myRunOnSave" value="true" />
+  </component>
   <component name="ProjectCodeStyleSettingsMigration">
     <option name="version" value="2" />
   </component>
@@ -39,7 +53,6 @@
   &quot;associatedIndex&quot;: 6
 }</component>
   <component name="ProjectId" id="2rZxfrGMUcn4rsT8oxu7TF8ecN7" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -50,14 +63,15 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "entities",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/Users/emkab/dev/java2d",
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.6321839",
+    "rearrange.code.on.save": "true",
     "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "preferences.lookFeel"
+    "settings.editor.selected.configurable": "actions.on.save"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -71,6 +85,36 @@
       <recent name="C:\Users\em\dev\java2D\src\main\java" />
       <recent name="C:\Users\em\dev\java2D\src" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="java2d" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <module name="java2d" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -89,11 +133,127 @@
       <option name="project" value="LOCAL" />
       <updated>1744845352000</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Scope fixes.">
+      <option name="closed" value="true" />
+      <created>1744845436889</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1744845436889</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Add global handling.">
+      <option name="closed" value="true" />
+      <created>1744847795010</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1744847795010</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Add text entity.">
+      <option name="closed" value="true" />
+      <created>1744847807388</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1744847807388</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Update Entity args system to use a key-value pair map.">
+      <option name="closed" value="true" />
+      <created>1746386003872</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1746386003872</updated>
+    </task>
+    <task id="LOCAL-00006" summary="_pos to pos.">
+      <option name="closed" value="true" />
+      <created>1746386417683</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1746386417683</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Add getters to: width, height, rWidth, rHeight, and scale.">
+      <option name="closed" value="true" />
+      <created>1746386619288</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1746386619288</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Add getters to: screen.">
+      <option name="closed" value="true" />
+      <created>1746386717351</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1746386717351</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Window fixes.">
+      <option name="closed" value="true" />
+      <created>1746387322084</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1746387322084</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Rename Screen functions.">
+      <option name="closed" value="true" />
+      <created>1746387331574</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1746387331574</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Add rectangle entity.">
+      <option name="closed" value="true" />
+      <created>1746387346942</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1746387346942</updated>
+    </task>
+    <task id="LOCAL-00012" summary=".idea workspace.xml change..">
+      <option name="closed" value="true" />
+      <created>1746387360314</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1746387360314</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Reformat.">
+      <option name="closed" value="true" />
+      <created>1746387537385</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1746387537385</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Constructor updates.">
+      <option name="closed" value="true" />
+      <created>1746387874831</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1746387874831</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Scope fixes." />
-    <option name="LAST_COMMIT_MESSAGE" value="Scope fixes." />
+    <MESSAGE value="Add global handling." />
+    <MESSAGE value="Add text entity." />
+    <MESSAGE value="Update Entity args system to use a key-value pair map." />
+    <MESSAGE value="_pos to pos." />
+    <MESSAGE value="Add getters to: width, height, rWidth, rHeight, and scale." />
+    <MESSAGE value="Add getters to: screen." />
+    <MESSAGE value="Window fixes." />
+    <MESSAGE value="Rename Screen functions." />
+    <MESSAGE value="Add rectangle entity." />
+    <MESSAGE value=".idea workspace.xml change.." />
+    <MESSAGE value="Reformat." />
+    <MESSAGE value="Constructor updates." />
+    <option name="LAST_COMMIT_MESSAGE" value="Constructor updates." />
   </component>
 </project>
