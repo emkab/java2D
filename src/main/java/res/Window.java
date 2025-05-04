@@ -95,6 +95,10 @@ public class Window implements Runnable, ActionListener, MouseListener, MouseMot
         return scale;
     }
 
+    public Screen getScreen() {
+        return screen;
+    }
+
     protected boolean waitUntil(Long time) {
         long now = System.nanoTime();
         if (now < time) {
