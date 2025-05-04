@@ -1,3 +1,4 @@
+import res.CircleEntity;
 import res.RectangleEntity;
 import res.TextEntity;
 import res.Vector2;
@@ -11,8 +12,10 @@ public class Main {
 
         TextEntity helloWorld = new TextEntity(new Vector2(5, 25), "Hello, world!", 18, new Color(255, 255, 255, 255));
         RectangleEntity helloRect = new RectangleEntity(window.getScreen().worldToScreen(0, 0), 40, 20, new Color(255, 255, 0, 255));
+        CircleEntity helloCircle = new CircleEntity(window.getScreen().worldToScreen(-50, -50), 30, Color.blue);
 
         window.addEntity(helloWorld);
         window.addEntity(helloRect);
+        window.addEntity(helloCircle);
     }
 }
